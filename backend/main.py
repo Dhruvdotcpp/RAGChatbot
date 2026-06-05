@@ -125,3 +125,8 @@ async def ask_question(body: QuestionRequest):
 
     # Return answer to frontend
     return {"answer": answer}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=10000)
