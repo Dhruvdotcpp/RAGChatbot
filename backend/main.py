@@ -39,8 +39,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",           # local development
-        "https://your-app.vercel.app",     # replace after Vercel deploy
-        "*"                                # temporary — allows all origins
+        "https://rag-chatbot-eta-orcin.vercel.app"   
     ],
     allow_methods=["*"],    # allow GET, POST, PUT, DELETE etc
     allow_headers=["*"]     # allow all headers
