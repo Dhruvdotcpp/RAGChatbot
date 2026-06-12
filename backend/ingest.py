@@ -63,11 +63,18 @@ def ingest_pdf(pdf_path: str):
     #     model_name="all-MiniLM-L6-v2"
     # )
     # New:-
-    embeddings = HuggingFaceEmbeddings(
-        model_name="all-MiniLM-L6-v2"
-    )
-    print("Embedding model loaded")
+    # embeddings = HuggingFaceEmbeddings(
+    #     model_name="all-MiniLM-L6-v2"
+    # )
+    # print("Embedding model loaded")
 
+    from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
+    # Replace HuggingFaceEmbeddings with:
+    embeddings = GoogleGenerativeAIEmbeddings(
+        model="models/embedding-001",
+        google_api_key=os.getenv("GOOGLE_API_KEY")
+)
 
     # Stage-4 ChromaDB
     # This does two things at once:

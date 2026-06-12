@@ -50,12 +50,19 @@ def get_answer(question: str) -> str:
     print(f"\nQuestion received: {question}")
 
     # STEP 1: Load the same embedding model
-    print("Loading embedding model...")
-    embeddings = HuggingFaceEmbeddings(
-        model_name="all-MiniLM-L6-v2"
-    )
+    # print("Loading embedding model...")
+    # embeddings = HuggingFaceEmbeddings(
+    #     model_name="all-MiniLM-L6-v2"
+    # )
     # The model used here must be same that was used in ingest.py 
 
+    from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
+    # Replace HuggingFaceEmbeddings with:
+    embeddings = GoogleGenerativeAIEmbeddings(
+        model="models/embedding-001",
+        google_api_key=os.getenv("GOOGLE_API_KEY")
+    )
 
     # STEP 2: Connect to ChromaDB
     print("Connecting to ChromaDB...")
