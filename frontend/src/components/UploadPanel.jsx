@@ -41,7 +41,7 @@ export default function UploadPanel() {
 
       // Deploying to production → use VITE_API_URL from .env for backend URL
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/upload`,
+        "http://localhost:8000/upload",
         formData
       )
 

@@ -2,6 +2,7 @@
 
 # Importing PyPDFLoader to open and read pdf files
 from langchain_community.document_loaders import PyPDFLoader
+# from langchain_pypdf import PyPDFLoader
 
 # Import text spliter to break long text into smaller overlapping chunks
 # from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -16,7 +17,11 @@ from langchain_huggingface import HuggingFaceEmbeddings
 # Import ChromaDB vector store to store vectors and corresponding texts and to also perform searching operation
 from langchain_community.vectorstores import Chroma
 
+import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Main Function (call this with any PDF path)
 def ingest_pdf(pdf_path: str):
@@ -63,18 +68,18 @@ def ingest_pdf(pdf_path: str):
     #     model_name="all-MiniLM-L6-v2"
     # )
     # New:-
-    # embeddings = HuggingFaceEmbeddings(
-    #     model_name="all-MiniLM-L6-v2"
+    embeddings = HuggingFaceEmbeddings(
+        model_name="all-MiniLM-L6-v2"
+    )
+    print("Embedding model loaded")
+
+    # from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
+    # # Replace HuggingFaceEmbeddings with:
+    # embeddings = GoogleGenerativeAIEmbeddings(
+    #     model="models/text-embedding-004",
+    #     google_api_key=os.getenv("GOOGLE_API_KEY")
     # )
-    # print("Embedding model loaded")
-
-    from langchain_google_genai import GoogleGenerativeAIEmbeddings
-
-    # Replace HuggingFaceEmbeddings with:
-    embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001",
-        google_api_key=os.getenv("GOOGLE_API_KEY")
-)
 
     # Stage-4 ChromaDB
     # This does two things at once:

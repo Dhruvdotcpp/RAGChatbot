@@ -54,7 +54,7 @@ export default function ChatWindow() {
       // })
 
       // Use VITE_API_URL from .env for backend URL
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/ask`, {
+      const res = await axios.post("http://localhost:8000/ask", {
         question  // shorthand for { question: question }
       })
 
